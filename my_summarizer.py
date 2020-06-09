@@ -263,8 +263,8 @@ class BasicSummarizerEnglish(object):
             return output_sent
         final_sentences_results = [format_output_sentences(
             s.sentence.replace("xx ", "")) for s in the_sentences_info]
-        out=[[final_sentences_results[i],the_sentences_info[i].overall_gain] for i in range(len(final_sentences_results))]    
-        return out #pd.DataFrame(out)
+ #       out=[[final_sentences_results[i],the_sentences_info[i].overall_gain] for i in range(len(final_sentences_results))]    
+        return final_sentences_results #pd.DataFrame(out)
 #    final_sentences_results, the_sentences_info
 
     def should_countinue_traverse(self, node, overlap_so_far, path_score,
