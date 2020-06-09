@@ -232,6 +232,7 @@ class BasicSummarizerEnglish(object):
         return output
 
     def start(self):
+        import pandas as pd
         for key, value in tqdm(self.G.nodes.data(), desc="Nodes : "):
             node = Node(key, value)
             path_score = 0.0
