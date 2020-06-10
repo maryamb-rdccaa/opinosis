@@ -538,7 +538,7 @@ class BasicSummarizerEnglish(object):
         list_pos=[sent[i].split('::')[1] for i in range(len(sent)) if len(sent[i].split('::'))>1]
         list_tag=[sent[i].split('::')[2] for i in range(len(sent)) if len(sent[i].split('::'))>1]
         if len(list_pos)>2 :
-            for Pattern in Patterns:
+            for Pattern in self.Patterns:
                 for i in range(len(list_pos)):
                     if type(Pattern[0][0])!=list :
                         if list_pos[i] in Pattern[0]:
