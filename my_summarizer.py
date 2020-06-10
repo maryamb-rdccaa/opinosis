@@ -108,7 +108,7 @@ class Candidate(object):
 class BasicSummarizerEnglish(object):
     def __init__(self,
                  directed_graph,params,Patterns):
-        self.Patterns=Patterns
+        self.Patterns=Patterns,
         self.params=params,
         self.config_max_summaries = params['config_max_summaries']
         self.config_vsn_threshold = params['config_vsn_threshold']
