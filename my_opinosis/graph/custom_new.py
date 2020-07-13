@@ -187,6 +187,7 @@ class PosTagGraph(CoreGraph):
                     self.G.add_node(current_node_label, doc_id=[
                                     1], pri=[(sent_id, word_pid)])
 
+    
                 # create an edge between the two nodes (at least one of them is new)
                 if (is_current_node_new or is_pervious_node_new):
                     if (previous_node_label is not None):
