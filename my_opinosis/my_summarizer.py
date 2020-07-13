@@ -422,7 +422,7 @@ class BasicSummarizerEnglish(object):
                 all_levels += candidate.level
                 senteces_list.append(candidate.sentence_list)
                 if (i > 0 and i == (len(collapsed) - 1)):
-                    buffer += " and "
+                    buffer += " et "
                 elif i > 0:
                     buffer += " , "
                 else:
@@ -459,7 +459,8 @@ class BasicSummarizerEnglish(object):
                     new_path_score = self.compute_score(
                         current_path_score, current_overlap_list, new_path_length)
                     node_label = node.get_node_label()
-                    match = re.match(".*:(vb[a-z]|in)$", node_label, re.I)
+#                    match = re.match(".*:(vb[a-z]|in)$", node_label, re.I)
+                    match = re.search(":Verb:", node_label, re.I)
                     if (self.PARAMETERS["CONFIG_TURN_ON_COLLAPSE"]
                             and path_length >= self.PARAMETERS["CONFIG_ATTACHMENT_AFTER"]
                             and len(current_overlap_list) <= len(overlap_list)
@@ -506,7 +507,7 @@ class BasicSummarizerEnglish(object):
         avg_node_pid = node.get_average_position()
         if avg_node_pid <= vsn_threshold:
             node_text, node_pos_tag, node_tag = node_label.split('::')
-            if node_pos_tag.lower() in ['sconj','det','adv','adp','pron','num']:
+            if node_pos_tag.lower() in ['sconj','det','adv','pron','num']:#,'adp'
                 match1=True
             if (node_pos_tag.lower()=='verb')&(node_tag=='VERB__VerbForm=Inf'):
                 match2=True
@@ -533,6 +534,7 @@ class BasicSummarizerEnglish(object):
         return False
     
     def is_valid_candidate(self, path_label):
+#        print(path_label)
         is_good = False
         sent=path_label.split(' ')
         list_pos=[sent[i].split('::')[1] for i in range(len(sent)) if len(sent[i].split('::'))>1]
